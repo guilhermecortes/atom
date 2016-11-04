@@ -1,0 +1,2020 @@
+{
+  "name": "autocomplete-json",
+  "main": "./dist/main",
+  "version": "5.1.0",
+  "description": "Atom autocomplete+ plugin for semantic JSON completions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bali182/autocomplete-json.git"
+  },
+  "keywords": [
+    "autocomplete",
+    "json",
+    "package",
+    "tsconfig",
+    "bower",
+    "babelrc",
+    "composer"
+  ],
+  "author": {
+    "name": "Balazs Edes"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bali182/autocomplete-json/issues"
+  },
+  "homepage": "https://github.com/bali182/autocomplete-json#readme",
+  "dependencies": {
+    "electron-proxy-agent": "^1.0.2",
+    "file-url": "^1.1.0",
+    "jaro-winkler": "^0.2.6",
+    "lodash": "^3.10.1",
+    "minimatch": "^3.0.0",
+    "node-fetch": "^1.3.3",
+    "npm-package-lookup": "^0.2.1",
+    "packagist-package-lookup": "^0.2.0",
+    "query-string": "^3.0.0",
+    "tokenizer2": "^1.2.0",
+    "uri-js": "^2.1.1",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-polyfill": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-typescript": "^2.10.0",
+    "merge2": "^0.3.6",
+    "typescript": "^1.7.5"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "provideAutocomplete"
+      }
+    },
+    "jsonschema.provider": {
+      "versions": {
+        "1.0.0": "provideJsonSchemaProviders"
+      }
+    },
+    "jsonautocomplete.provider": {
+      "versions": {
+        "1.0.0": "provideProposalProviders"
+      }
+    }
+  },
+  "consumedServices": {
+    "jsonschema.provider": {
+      "versions": {
+        "1.0.0": "consumeJsonSchemaProviders"
+      }
+    },
+    "jsonautocomplete.provider": {
+      "versions": {
+        "1.0.0 ": "consumeJsonProposalProviders"
+      }
+    }
+  },
+  "readme": "#autocomplete-json\r\n**Semantic autocompletion for JSON files**\r\n\r\n##how this works\r\nSince 5.0 (it supposed to be 2.0 but I messed up `apm publish`) was released, this is the way this package works:\r\n\r\n1. Load the available schema \"manifest\" from [schemastore.org](http://schemastore.org/api/json/catalog.json)\r\n2. Once a `.json` file is opened, and autocompletion is activated (CTRL+Space usually), the file name is matched against the `fileMatch` field in each schema descriptor, and if there's a match, that schema is loaded and used for autocompletion in the given file.\r\n3. There are also some extra features, like autocompletion for files and dependencies. These are available for the most frequently used schemas, like `package.json` and `tsconfig.json`.\r\n\r\n**The 5.0 release will most likely cause a lots of issues and bugs, please [report](https://github.com/bali182/autocomplete-json/issues) if you find any!**\r\n\r\n##features\r\n\r\n####json schema\r\n\r\n![JSON schema autocomplete](https://cloud.githubusercontent.com/assets/3879181/12832986/cfc5926e-cb9d-11e5-916e-721790721fc4.gif)\r\n\r\n####npm dependencies\r\n\r\n![Autocomplete npm dependencies](https://cloud.githubusercontent.com/assets/3879181/12832997/e4f12630-cb9d-11e5-8cbf-589ad68e4b08.gif)\r\n\r\n####files\r\n\r\n![Autocomplete files](https://cloud.githubusercontent.com/assets/3879181/12832990/d6bd7d2a-cb9d-11e5-9f47-88f3efffb2ad.gif)\r\n\r\n####babelrc 6+ plugins and presets\r\n\r\n![Autocomplete babelrc plugins and presets](https://cloud.githubusercontent.com/assets/3879181/12832973/c3e5be4c-cb9d-11e5-99e1-50d2f316215e.gif)\r\n\r\n\r\n##development\r\n\r\nWiki about [development](https://github.com/bali182/autocomplete-json/wiki/Contributing)\r\n\r\n##support for your schema\r\n\r\nWiki about [providers](https://github.com/bali182/autocomplete-json/wiki/CreateProviders)\r\n",
+  "readmeFilename": "readme.md",
+  "_id": "autocomplete-json@5.1.0",
+  "_shasum": "38b436cd08ab0f7b703d8c3888489d702df56a29",
+  "_resolved": "file:../d-116614-61702-1orh7hp/package.tgz",
+  "_from": "../d-116614-61702-1orh7hp/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "electron-proxy-agent",
+        "version": "1.0.2",
+        "path": "node_modules/electron-proxy-agent/index.js"
+      },
+      {
+        "name": "agent-base",
+        "version": "2.0.1",
+        "path": "node_modules/electron-proxy-agent/node_modules/agent-base/agent.js"
+      },
+      {
+        "name": "semver",
+        "version": "5.0.3",
+        "path": "node_modules/electron-proxy-agent/node_modules/agent-base/node_modules/semver/semver.js"
+      },
+      {
+        "name": "debug",
+        "version": "2.2.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/debug/node.js"
+      },
+      {
+        "name": "ms",
+        "version": "0.7.1",
+        "path": "node_modules/electron-proxy-agent/node_modules/debug/node_modules/ms/index.js"
+      },
+      {
+        "name": "extend",
+        "version": "3.0.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/extend/index.js"
+      },
+      {
+        "name": "get-uri",
+        "version": "1.1.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/index.js"
+      },
+      {
+        "name": "data-uri-to-buffer",
+        "version": "0.0.4",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/data-uri-to-buffer/index.js"
+      },
+      {
+        "name": "file-uri-to-path",
+        "version": "0.0.2",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/file-uri-to-path/index.js"
+      },
+      {
+        "name": "ftp",
+        "version": "0.3.10",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/lib/connection.js"
+      },
+      {
+        "name": "readable-stream",
+        "version": "1.1.14",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/readable.js"
+      },
+      {
+        "name": "core-util-is",
+        "version": "1.0.2",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/core-util-is/lib/util.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "isarray",
+        "version": "0.0.1",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/isarray/index.js"
+      },
+      {
+        "name": "string_decoder",
+        "version": "0.10.31",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/string_decoder/index.js"
+      },
+      {
+        "name": "xregexp",
+        "version": "2.0.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/xregexp/xregexp-all.js"
+      },
+      {
+        "name": "readable-stream",
+        "version": "2.1.4",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/readable.js"
+      },
+      {
+        "name": "buffer-shims",
+        "version": "1.0.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/buffer-shims/index.js"
+      },
+      {
+        "name": "core-util-is",
+        "version": "1.0.2",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/core-util-is/lib/util.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "isarray",
+        "version": "1.0.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/isarray/index.js"
+      },
+      {
+        "name": "process-nextick-args",
+        "version": "1.0.7",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/process-nextick-args/index.js"
+      },
+      {
+        "name": "string_decoder",
+        "version": "0.10.31",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/string_decoder/index.js"
+      },
+      {
+        "name": "util-deprecate",
+        "version": "1.0.2",
+        "path": "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/util-deprecate/node.js"
+      },
+      {
+        "name": "http-proxy-agent",
+        "version": "1.0.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/http-proxy-agent/http-proxy-agent.js"
+      },
+      {
+        "name": "https-proxy-agent",
+        "version": "1.0.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/https-proxy-agent/https-proxy-agent.js"
+      },
+      {
+        "name": "socks-proxy-agent",
+        "version": "2.0.0",
+        "path": "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/socks-proxy-agent.js"
+      },
+      {
+        "name": "socks",
+        "version": "1.1.9",
+        "path": "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/index.js"
+      },
+      {
+        "name": "ip",
+        "version": "1.1.3",
+        "path": "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/node_modules/ip/lib/ip.js"
+      },
+      {
+        "name": "smart-buffer",
+        "version": "1.0.11",
+        "path": "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/node_modules/smart-buffer/lib/smart-buffer.js"
+      },
+      {
+        "name": "file-url",
+        "version": "1.1.0",
+        "path": "node_modules/file-url/index.js"
+      },
+      {
+        "name": "meow",
+        "version": "3.7.0",
+        "path": "node_modules/file-url/node_modules/meow/index.js"
+      },
+      {
+        "name": "camelcase-keys",
+        "version": "2.1.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/camelcase-keys/index.js"
+      },
+      {
+        "name": "camelcase",
+        "version": "2.1.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/camelcase-keys/node_modules/camelcase/index.js"
+      },
+      {
+        "name": "decamelize",
+        "version": "1.2.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/decamelize/index.js"
+      },
+      {
+        "name": "loud-rejection",
+        "version": "1.6.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/index.js"
+      },
+      {
+        "name": "currently-unhandled",
+        "version": "0.4.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/index.js"
+      },
+      {
+        "name": "array-find-index",
+        "version": "1.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/node_modules/array-find-index/index.js"
+      },
+      {
+        "name": "signal-exit",
+        "version": "3.0.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/signal-exit/index.js"
+      },
+      {
+        "name": "map-obj",
+        "version": "1.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/map-obj/index.js"
+      },
+      {
+        "name": "minimist",
+        "version": "1.2.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/minimist/index.js"
+      },
+      {
+        "name": "normalize-package-data",
+        "version": "2.3.5",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/normalize.js"
+      },
+      {
+        "name": "hosted-git-info",
+        "version": "2.1.5",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/hosted-git-info/index.js"
+      },
+      {
+        "name": "is-builtin-module",
+        "version": "1.0.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/index.js"
+      },
+      {
+        "name": "builtin-modules",
+        "version": "1.1.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/node_modules/builtin-modules/index.js"
+      },
+      {
+        "name": "semver",
+        "version": "5.2.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/semver/semver.js"
+      },
+      {
+        "name": "validate-npm-package-license",
+        "version": "3.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/index.js"
+      },
+      {
+        "name": "spdx-correct",
+        "version": "1.0.2",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-correct/index.js"
+      },
+      {
+        "name": "spdx-license-ids",
+        "version": "1.2.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-correct/node_modules/spdx-license-ids/spdx-license-ids.json"
+      },
+      {
+        "name": "spdx-expression-parse",
+        "version": "1.0.2",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/index.js"
+      },
+      {
+        "name": "spdx-exceptions",
+        "version": "1.0.5",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/node_modules/spdx-exceptions/index.json"
+      },
+      {
+        "name": "spdx-license-ids",
+        "version": "1.2.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/node_modules/spdx-license-ids/spdx-license-ids.json"
+      },
+      {
+        "name": "object-assign",
+        "version": "4.1.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/object-assign/index.js"
+      },
+      {
+        "name": "read-pkg-up",
+        "version": "1.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/index.js"
+      },
+      {
+        "name": "find-up",
+        "version": "1.1.2",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/index.js"
+      },
+      {
+        "name": "path-exists",
+        "version": "2.1.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/path-exists/index.js"
+      },
+      {
+        "name": "pinkie-promise",
+        "version": "2.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/pinkie-promise/index.js"
+      },
+      {
+        "name": "pinkie",
+        "version": "2.0.4",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/pinkie-promise/node_modules/pinkie/index.js"
+      },
+      {
+        "name": "read-pkg",
+        "version": "1.1.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/index.js"
+      },
+      {
+        "name": "load-json-file",
+        "version": "1.1.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/index.js"
+      },
+      {
+        "name": "graceful-fs",
+        "version": "4.1.4",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/graceful-fs/graceful-fs.js"
+      },
+      {
+        "name": "parse-json",
+        "version": "2.2.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/index.js"
+      },
+      {
+        "name": "error-ex",
+        "version": "1.3.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/index.js"
+      },
+      {
+        "name": "is-arrayish",
+        "version": "0.2.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/index.js"
+      },
+      {
+        "name": "pify",
+        "version": "2.3.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pify/index.js"
+      },
+      {
+        "name": "pinkie-promise",
+        "version": "2.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pinkie-promise/index.js"
+      },
+      {
+        "name": "pinkie",
+        "version": "2.0.4",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pinkie-promise/node_modules/pinkie/index.js"
+      },
+      {
+        "name": "strip-bom",
+        "version": "2.0.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/strip-bom/index.js"
+      },
+      {
+        "name": "is-utf8",
+        "version": "0.2.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/strip-bom/node_modules/is-utf8/is-utf8.js"
+      },
+      {
+        "name": "path-type",
+        "version": "1.1.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/index.js"
+      },
+      {
+        "name": "graceful-fs",
+        "version": "4.1.4",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/graceful-fs/graceful-fs.js"
+      },
+      {
+        "name": "pify",
+        "version": "2.3.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pify/index.js"
+      },
+      {
+        "name": "pinkie-promise",
+        "version": "2.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pinkie-promise/index.js"
+      },
+      {
+        "name": "pinkie",
+        "version": "2.0.4",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pinkie-promise/node_modules/pinkie/index.js"
+      },
+      {
+        "name": "redent",
+        "version": "1.0.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/redent/index.js"
+      },
+      {
+        "name": "indent-string",
+        "version": "2.1.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/index.js"
+      },
+      {
+        "name": "repeating",
+        "version": "2.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/index.js"
+      },
+      {
+        "name": "is-finite",
+        "version": "1.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/node_modules/is-finite/index.js"
+      },
+      {
+        "name": "number-is-nan",
+        "version": "1.0.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/node_modules/is-finite/node_modules/number-is-nan/index.js"
+      },
+      {
+        "name": "strip-indent",
+        "version": "1.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent/index.js"
+      },
+      {
+        "name": "get-stdin",
+        "version": "4.0.1",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent/node_modules/get-stdin/index.js"
+      },
+      {
+        "name": "trim-newlines",
+        "version": "1.0.0",
+        "path": "node_modules/file-url/node_modules/meow/node_modules/trim-newlines/index.js"
+      },
+      {
+        "name": "jaro-winkler",
+        "version": "0.2.6",
+        "path": "node_modules/jaro-winkler/index.js"
+      },
+      {
+        "name": "lodash",
+        "version": "3.10.1",
+        "path": "node_modules/lodash/index.js"
+      },
+      {
+        "name": "minimatch",
+        "version": "3.0.2",
+        "path": "node_modules/minimatch/minimatch.js"
+      },
+      {
+        "name": "brace-expansion",
+        "version": "1.1.5",
+        "path": "node_modules/minimatch/node_modules/brace-expansion/index.js"
+      },
+      {
+        "name": "balanced-match",
+        "version": "0.4.1",
+        "path": "node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/index.js"
+      },
+      {
+        "name": "concat-map",
+        "version": "0.0.1",
+        "path": "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/index.js"
+      },
+      {
+        "name": "node-fetch",
+        "version": "1.5.3",
+        "path": "node_modules/node-fetch/index.js"
+      },
+      {
+        "name": "encoding",
+        "version": "0.1.12",
+        "path": "node_modules/node-fetch/node_modules/encoding/lib/encoding.js"
+      },
+      {
+        "name": "iconv-lite",
+        "version": "0.4.13",
+        "path": "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/lib/index.js"
+      },
+      {
+        "name": "is-stream",
+        "version": "1.1.0",
+        "path": "node_modules/node-fetch/node_modules/is-stream/index.js"
+      },
+      {
+        "name": "npm-package-lookup",
+        "version": "0.2.1",
+        "path": "node_modules/npm-package-lookup/index.js"
+      },
+      {
+        "name": "lodash.memoize",
+        "version": "4.1.0",
+        "path": "node_modules/npm-package-lookup/node_modules/lodash.memoize/index.js"
+      },
+      {
+        "name": "lodash._root",
+        "version": "3.0.1",
+        "path": "node_modules/npm-package-lookup/node_modules/lodash.memoize/node_modules/lodash._root/index.js"
+      },
+      {
+        "name": "semver-stable",
+        "version": "2.0.4",
+        "path": "node_modules/npm-package-lookup/node_modules/semver-stable/index.js"
+      },
+      {
+        "name": "semver",
+        "version": "5.2.0",
+        "path": "node_modules/npm-package-lookup/node_modules/semver-stable/node_modules/semver/semver.js"
+      },
+      {
+        "name": "semver-utils",
+        "version": "1.1.1",
+        "path": "node_modules/npm-package-lookup/node_modules/semver-utils/semver-utils.js"
+      },
+      {
+        "name": "packagist-package-lookup",
+        "version": "0.2.0",
+        "path": "node_modules/packagist-package-lookup/index.js"
+      },
+      {
+        "name": "lodash.memoize",
+        "version": "4.1.0",
+        "path": "node_modules/packagist-package-lookup/node_modules/lodash.memoize/index.js"
+      },
+      {
+        "name": "lodash._root",
+        "version": "3.0.1",
+        "path": "node_modules/packagist-package-lookup/node_modules/lodash.memoize/node_modules/lodash._root/index.js"
+      },
+      {
+        "name": "semver-stable",
+        "version": "2.0.4",
+        "path": "node_modules/packagist-package-lookup/node_modules/semver-stable/index.js"
+      },
+      {
+        "name": "semver",
+        "version": "5.2.0",
+        "path": "node_modules/packagist-package-lookup/node_modules/semver-stable/node_modules/semver/semver.js"
+      },
+      {
+        "name": "semver-utils",
+        "version": "1.1.1",
+        "path": "node_modules/packagist-package-lookup/node_modules/semver-utils/semver-utils.js"
+      },
+      {
+        "name": "query-string",
+        "version": "3.0.3",
+        "path": "node_modules/query-string/index.js"
+      },
+      {
+        "name": "strict-uri-encode",
+        "version": "1.1.0",
+        "path": "node_modules/query-string/node_modules/strict-uri-encode/index.js"
+      },
+      {
+        "name": "tokenizer2",
+        "version": "1.2.1",
+        "path": "node_modules/tokenizer2/index.js"
+      },
+      {
+        "name": "through2",
+        "version": "2.0.1",
+        "path": "node_modules/tokenizer2/node_modules/through2/through2.js"
+      },
+      {
+        "name": "readable-stream",
+        "version": "2.0.6",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/readable.js"
+      },
+      {
+        "name": "core-util-is",
+        "version": "1.0.2",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "isarray",
+        "version": "1.0.0",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/isarray/index.js"
+      },
+      {
+        "name": "process-nextick-args",
+        "version": "1.0.7",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/process-nextick-args/index.js"
+      },
+      {
+        "name": "string_decoder",
+        "version": "0.10.31",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/string_decoder/index.js"
+      },
+      {
+        "name": "util-deprecate",
+        "version": "1.0.2",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/util-deprecate/node.js"
+      },
+      {
+        "name": "xtend",
+        "version": "4.0.1",
+        "path": "node_modules/tokenizer2/node_modules/through2/node_modules/xtend/immutable.js"
+      },
+      {
+        "name": "uri-js",
+        "version": "2.1.1",
+        "path": "node_modules/uri-js/build/uri.js"
+      },
+      {
+        "name": "valid-url",
+        "version": "1.0.9",
+        "path": "node_modules/valid-url/index.js"
+      }
+    ],
+    "extensions": {
+      ".js": [
+        "gulpfile.js",
+        "node_modules/electron-proxy-agent/index.js",
+        "node_modules/electron-proxy-agent/node_modules/agent-base/agent.js",
+        "node_modules/electron-proxy-agent/node_modules/agent-base/node_modules/semver/semver.js",
+        "node_modules/electron-proxy-agent/node_modules/agent-base/patch-core.js",
+        "node_modules/electron-proxy-agent/node_modules/debug/browser.js",
+        "node_modules/electron-proxy-agent/node_modules/debug/debug.js",
+        "node_modules/electron-proxy-agent/node_modules/debug/node.js",
+        "node_modules/electron-proxy-agent/node_modules/debug/node_modules/ms/index.js",
+        "node_modules/electron-proxy-agent/node_modules/extend/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/data.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/file.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/ftp.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/http.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/https.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/data-uri-to-buffer/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/file-uri-to-path/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/lib/connection.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/lib/parser.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/duplex.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/lib/_stream_duplex.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/lib/_stream_passthrough.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/lib/_stream_readable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/lib/_stream_transform.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/lib/_stream_writable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/core-util-is/lib/util.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/core-util-is/test.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/inherits/inherits.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/inherits/inherits_browser.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/inherits/test.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/isarray/build/build.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/isarray/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/string_decoder/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/passthrough.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/readable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/transform.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/writable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/xregexp/xregexp-all.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/duplex.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/lib/_stream_duplex.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/lib/_stream_passthrough.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/lib/_stream_readable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/lib/_stream_transform.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/lib/_stream_writable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/buffer-shims/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/core-util-is/lib/util.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/core-util-is/test.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/inherits/inherits.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/inherits/inherits_browser.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/inherits/test.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/isarray/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/isarray/test.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/process-nextick-args/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/process-nextick-args/test.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/string_decoder/index.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/util-deprecate/browser.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/util-deprecate/node.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/passthrough.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/readable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/transform.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/writable.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/notfound.js",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/notmodified.js",
+        "node_modules/electron-proxy-agent/node_modules/http-proxy-agent/http-proxy-agent.js",
+        "node_modules/electron-proxy-agent/node_modules/https-proxy-agent/https-proxy-agent.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/examples/associate.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/examples/bind.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/examples/connect.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/index.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/lib/socks-agent.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/lib/socks-client.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/node_modules/ip/lib/ip.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/node_modules/smart-buffer/lib/smart-buffer.js",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/socks-proxy-agent.js",
+        "node_modules/file-url/cli.js",
+        "node_modules/file-url/index.js",
+        "node_modules/file-url/node_modules/meow/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/camelcase-keys/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/camelcase-keys/node_modules/camelcase/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/decamelize/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/api.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/browser.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/core.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/node_modules/array-find-index/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/signal-exit/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/signal-exit/signals.js",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/register.js",
+        "node_modules/file-url/node_modules/meow/node_modules/map-obj/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/minimist/example/parse.js",
+        "node_modules/file-url/node_modules/meow/node_modules/minimist/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/extract_description.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/fixer.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/make_warning.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/normalize.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/safe_format.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/hosted-git-info/git-host-info.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/hosted-git-info/git-host.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/hosted-git-info/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/node_modules/builtin-modules/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/node_modules/builtin-modules/static.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/semver/semver.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-correct/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/parser.generated.js",
+        "node_modules/file-url/node_modules/meow/node_modules/object-assign/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/path-exists/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/pinkie-promise/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/pinkie-promise/node_modules/pinkie/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/graceful-fs/fs.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/graceful-fs/graceful-fs.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/graceful-fs/legacy-streams.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/graceful-fs/polyfills.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/vendor/parse.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/vendor/unicode.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pify/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pinkie-promise/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pinkie-promise/node_modules/pinkie/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/strip-bom/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/strip-bom/node_modules/is-utf8/is-utf8.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/graceful-fs/fs.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/graceful-fs/graceful-fs.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/graceful-fs/legacy-streams.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/graceful-fs/polyfills.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pify/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pinkie-promise/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pinkie-promise/node_modules/pinkie/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/node_modules/is-finite/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/node_modules/is-finite/node_modules/number-is-nan/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent/cli.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent/node_modules/get-stdin/index.js",
+        "node_modules/file-url/node_modules/meow/node_modules/trim-newlines/index.js",
+        "node_modules/jaro-winkler/index.js",
+        "node_modules/lodash/array/chunk.js",
+        "node_modules/lodash/array/compact.js",
+        "node_modules/lodash/array/difference.js",
+        "node_modules/lodash/array/drop.js",
+        "node_modules/lodash/array/dropRight.js",
+        "node_modules/lodash/array/dropRightWhile.js",
+        "node_modules/lodash/array/dropWhile.js",
+        "node_modules/lodash/array/fill.js",
+        "node_modules/lodash/array/findIndex.js",
+        "node_modules/lodash/array/findLastIndex.js",
+        "node_modules/lodash/array/first.js",
+        "node_modules/lodash/array/flatten.js",
+        "node_modules/lodash/array/flattenDeep.js",
+        "node_modules/lodash/array/head.js",
+        "node_modules/lodash/array/indexOf.js",
+        "node_modules/lodash/array/initial.js",
+        "node_modules/lodash/array/intersection.js",
+        "node_modules/lodash/array/last.js",
+        "node_modules/lodash/array/lastIndexOf.js",
+        "node_modules/lodash/array/object.js",
+        "node_modules/lodash/array/pull.js",
+        "node_modules/lodash/array/pullAt.js",
+        "node_modules/lodash/array/remove.js",
+        "node_modules/lodash/array/rest.js",
+        "node_modules/lodash/array/slice.js",
+        "node_modules/lodash/array/sortedIndex.js",
+        "node_modules/lodash/array/sortedLastIndex.js",
+        "node_modules/lodash/array/tail.js",
+        "node_modules/lodash/array/take.js",
+        "node_modules/lodash/array/takeRight.js",
+        "node_modules/lodash/array/takeRightWhile.js",
+        "node_modules/lodash/array/takeWhile.js",
+        "node_modules/lodash/array/union.js",
+        "node_modules/lodash/array/uniq.js",
+        "node_modules/lodash/array/unique.js",
+        "node_modules/lodash/array/unzip.js",
+        "node_modules/lodash/array/unzipWith.js",
+        "node_modules/lodash/array/without.js",
+        "node_modules/lodash/array/xor.js",
+        "node_modules/lodash/array/zip.js",
+        "node_modules/lodash/array/zipObject.js",
+        "node_modules/lodash/array/zipWith.js",
+        "node_modules/lodash/array.js",
+        "node_modules/lodash/chain/chain.js",
+        "node_modules/lodash/chain/commit.js",
+        "node_modules/lodash/chain/concat.js",
+        "node_modules/lodash/chain/lodash.js",
+        "node_modules/lodash/chain/plant.js",
+        "node_modules/lodash/chain/reverse.js",
+        "node_modules/lodash/chain/run.js",
+        "node_modules/lodash/chain/tap.js",
+        "node_modules/lodash/chain/thru.js",
+        "node_modules/lodash/chain/toJSON.js",
+        "node_modules/lodash/chain/toString.js",
+        "node_modules/lodash/chain/value.js",
+        "node_modules/lodash/chain/valueOf.js",
+        "node_modules/lodash/chain/wrapperChain.js",
+        "node_modules/lodash/chain/wrapperCommit.js",
+        "node_modules/lodash/chain/wrapperConcat.js",
+        "node_modules/lodash/chain/wrapperPlant.js",
+        "node_modules/lodash/chain/wrapperReverse.js",
+        "node_modules/lodash/chain/wrapperToString.js",
+        "node_modules/lodash/chain/wrapperValue.js",
+        "node_modules/lodash/chain.js",
+        "node_modules/lodash/collection/all.js",
+        "node_modules/lodash/collection/any.js",
+        "node_modules/lodash/collection/at.js",
+        "node_modules/lodash/collection/collect.js",
+        "node_modules/lodash/collection/contains.js",
+        "node_modules/lodash/collection/countBy.js",
+        "node_modules/lodash/collection/detect.js",
+        "node_modules/lodash/collection/each.js",
+        "node_modules/lodash/collection/eachRight.js",
+        "node_modules/lodash/collection/every.js",
+        "node_modules/lodash/collection/filter.js",
+        "node_modules/lodash/collection/find.js",
+        "node_modules/lodash/collection/findLast.js",
+        "node_modules/lodash/collection/findWhere.js",
+        "node_modules/lodash/collection/foldl.js",
+        "node_modules/lodash/collection/foldr.js",
+        "node_modules/lodash/collection/forEach.js",
+        "node_modules/lodash/collection/forEachRight.js",
+        "node_modules/lodash/collection/groupBy.js",
+        "node_modules/lodash/collection/include.js",
+        "node_modules/lodash/collection/includes.js",
+        "node_modules/lodash/collection/indexBy.js",
+        "node_modules/lodash/collection/inject.js",
+        "node_modules/lodash/collection/invoke.js",
+        "node_modules/lodash/collection/map.js",
+        "node_modules/lodash/collection/max.js",
+        "node_modules/lodash/collection/min.js",
+        "node_modules/lodash/collection/partition.js",
+        "node_modules/lodash/collection/pluck.js",
+        "node_modules/lodash/collection/reduce.js",
+        "node_modules/lodash/collection/reduceRight.js",
+        "node_modules/lodash/collection/reject.js",
+        "node_modules/lodash/collection/sample.js",
+        "node_modules/lodash/collection/select.js",
+        "node_modules/lodash/collection/shuffle.js",
+        "node_modules/lodash/collection/size.js",
+        "node_modules/lodash/collection/some.js",
+        "node_modules/lodash/collection/sortBy.js",
+        "node_modules/lodash/collection/sortByAll.js",
+        "node_modules/lodash/collection/sortByOrder.js",
+        "node_modules/lodash/collection/sum.js",
+        "node_modules/lodash/collection/where.js",
+        "node_modules/lodash/collection.js",
+        "node_modules/lodash/date/now.js",
+        "node_modules/lodash/date.js",
+        "node_modules/lodash/function/after.js",
+        "node_modules/lodash/function/ary.js",
+        "node_modules/lodash/function/backflow.js",
+        "node_modules/lodash/function/before.js",
+        "node_modules/lodash/function/bind.js",
+        "node_modules/lodash/function/bindAll.js",
+        "node_modules/lodash/function/bindKey.js",
+        "node_modules/lodash/function/compose.js",
+        "node_modules/lodash/function/curry.js",
+        "node_modules/lodash/function/curryRight.js",
+        "node_modules/lodash/function/debounce.js",
+        "node_modules/lodash/function/defer.js",
+        "node_modules/lodash/function/delay.js",
+        "node_modules/lodash/function/flow.js",
+        "node_modules/lodash/function/flowRight.js",
+        "node_modules/lodash/function/memoize.js",
+        "node_modules/lodash/function/modArgs.js",
+        "node_modules/lodash/function/negate.js",
+        "node_modules/lodash/function/once.js",
+        "node_modules/lodash/function/partial.js",
+        "node_modules/lodash/function/partialRight.js",
+        "node_modules/lodash/function/rearg.js",
+        "node_modules/lodash/function/restParam.js",
+        "node_modules/lodash/function/spread.js",
+        "node_modules/lodash/function/throttle.js",
+        "node_modules/lodash/function/wrap.js",
+        "node_modules/lodash/function.js",
+        "node_modules/lodash/index.js",
+        "node_modules/lodash/internal/LazyWrapper.js",
+        "node_modules/lodash/internal/LodashWrapper.js",
+        "node_modules/lodash/internal/MapCache.js",
+        "node_modules/lodash/internal/SetCache.js",
+        "node_modules/lodash/internal/arrayConcat.js",
+        "node_modules/lodash/internal/arrayCopy.js",
+        "node_modules/lodash/internal/arrayEach.js",
+        "node_modules/lodash/internal/arrayEachRight.js",
+        "node_modules/lodash/internal/arrayEvery.js",
+        "node_modules/lodash/internal/arrayExtremum.js",
+        "node_modules/lodash/internal/arrayFilter.js",
+        "node_modules/lodash/internal/arrayMap.js",
+        "node_modules/lodash/internal/arrayPush.js",
+        "node_modules/lodash/internal/arrayReduce.js",
+        "node_modules/lodash/internal/arrayReduceRight.js",
+        "node_modules/lodash/internal/arraySome.js",
+        "node_modules/lodash/internal/arraySum.js",
+        "node_modules/lodash/internal/assignDefaults.js",
+        "node_modules/lodash/internal/assignOwnDefaults.js",
+        "node_modules/lodash/internal/assignWith.js",
+        "node_modules/lodash/internal/baseAssign.js",
+        "node_modules/lodash/internal/baseAt.js",
+        "node_modules/lodash/internal/baseCallback.js",
+        "node_modules/lodash/internal/baseClone.js",
+        "node_modules/lodash/internal/baseCompareAscending.js",
+        "node_modules/lodash/internal/baseCopy.js",
+        "node_modules/lodash/internal/baseCreate.js",
+        "node_modules/lodash/internal/baseDelay.js",
+        "node_modules/lodash/internal/baseDifference.js",
+        "node_modules/lodash/internal/baseEach.js",
+        "node_modules/lodash/internal/baseEachRight.js",
+        "node_modules/lodash/internal/baseEvery.js",
+        "node_modules/lodash/internal/baseExtremum.js",
+        "node_modules/lodash/internal/baseFill.js",
+        "node_modules/lodash/internal/baseFilter.js",
+        "node_modules/lodash/internal/baseFind.js",
+        "node_modules/lodash/internal/baseFindIndex.js",
+        "node_modules/lodash/internal/baseFlatten.js",
+        "node_modules/lodash/internal/baseFor.js",
+        "node_modules/lodash/internal/baseForIn.js",
+        "node_modules/lodash/internal/baseForOwn.js",
+        "node_modules/lodash/internal/baseForOwnRight.js",
+        "node_modules/lodash/internal/baseForRight.js",
+        "node_modules/lodash/internal/baseFunctions.js",
+        "node_modules/lodash/internal/baseGet.js",
+        "node_modules/lodash/internal/baseIndexOf.js",
+        "node_modules/lodash/internal/baseIsEqual.js",
+        "node_modules/lodash/internal/baseIsEqualDeep.js",
+        "node_modules/lodash/internal/baseIsFunction.js",
+        "node_modules/lodash/internal/baseIsMatch.js",
+        "node_modules/lodash/internal/baseLodash.js",
+        "node_modules/lodash/internal/baseMap.js",
+        "node_modules/lodash/internal/baseMatches.js",
+        "node_modules/lodash/internal/baseMatchesProperty.js",
+        "node_modules/lodash/internal/baseMerge.js",
+        "node_modules/lodash/internal/baseMergeDeep.js",
+        "node_modules/lodash/internal/baseProperty.js",
+        "node_modules/lodash/internal/basePropertyDeep.js",
+        "node_modules/lodash/internal/basePullAt.js",
+        "node_modules/lodash/internal/baseRandom.js",
+        "node_modules/lodash/internal/baseReduce.js",
+        "node_modules/lodash/internal/baseSetData.js",
+        "node_modules/lodash/internal/baseSlice.js",
+        "node_modules/lodash/internal/baseSome.js",
+        "node_modules/lodash/internal/baseSortBy.js",
+        "node_modules/lodash/internal/baseSortByOrder.js",
+        "node_modules/lodash/internal/baseSum.js",
+        "node_modules/lodash/internal/baseToString.js",
+        "node_modules/lodash/internal/baseUniq.js",
+        "node_modules/lodash/internal/baseValues.js",
+        "node_modules/lodash/internal/baseWhile.js",
+        "node_modules/lodash/internal/baseWrapperValue.js",
+        "node_modules/lodash/internal/binaryIndex.js",
+        "node_modules/lodash/internal/binaryIndexBy.js",
+        "node_modules/lodash/internal/bindCallback.js",
+        "node_modules/lodash/internal/bufferClone.js",
+        "node_modules/lodash/internal/cacheIndexOf.js",
+        "node_modules/lodash/internal/cachePush.js",
+        "node_modules/lodash/internal/charsLeftIndex.js",
+        "node_modules/lodash/internal/charsRightIndex.js",
+        "node_modules/lodash/internal/compareAscending.js",
+        "node_modules/lodash/internal/compareMultiple.js",
+        "node_modules/lodash/internal/composeArgs.js",
+        "node_modules/lodash/internal/composeArgsRight.js",
+        "node_modules/lodash/internal/createAggregator.js",
+        "node_modules/lodash/internal/createAssigner.js",
+        "node_modules/lodash/internal/createBaseEach.js",
+        "node_modules/lodash/internal/createBaseFor.js",
+        "node_modules/lodash/internal/createBindWrapper.js",
+        "node_modules/lodash/internal/createCache.js",
+        "node_modules/lodash/internal/createCompounder.js",
+        "node_modules/lodash/internal/createCtorWrapper.js",
+        "node_modules/lodash/internal/createCurry.js",
+        "node_modules/lodash/internal/createDefaults.js",
+        "node_modules/lodash/internal/createExtremum.js",
+        "node_modules/lodash/internal/createFind.js",
+        "node_modules/lodash/internal/createFindIndex.js",
+        "node_modules/lodash/internal/createFindKey.js",
+        "node_modules/lodash/internal/createFlow.js",
+        "node_modules/lodash/internal/createForEach.js",
+        "node_modules/lodash/internal/createForIn.js",
+        "node_modules/lodash/internal/createForOwn.js",
+        "node_modules/lodash/internal/createHybridWrapper.js",
+        "node_modules/lodash/internal/createObjectMapper.js",
+        "node_modules/lodash/internal/createPadDir.js",
+        "node_modules/lodash/internal/createPadding.js",
+        "node_modules/lodash/internal/createPartial.js",
+        "node_modules/lodash/internal/createPartialWrapper.js",
+        "node_modules/lodash/internal/createReduce.js",
+        "node_modules/lodash/internal/createRound.js",
+        "node_modules/lodash/internal/createSortedIndex.js",
+        "node_modules/lodash/internal/createWrapper.js",
+        "node_modules/lodash/internal/deburrLetter.js",
+        "node_modules/lodash/internal/equalArrays.js",
+        "node_modules/lodash/internal/equalByTag.js",
+        "node_modules/lodash/internal/equalObjects.js",
+        "node_modules/lodash/internal/escapeHtmlChar.js",
+        "node_modules/lodash/internal/escapeRegExpChar.js",
+        "node_modules/lodash/internal/escapeStringChar.js",
+        "node_modules/lodash/internal/getData.js",
+        "node_modules/lodash/internal/getFuncName.js",
+        "node_modules/lodash/internal/getLength.js",
+        "node_modules/lodash/internal/getMatchData.js",
+        "node_modules/lodash/internal/getNative.js",
+        "node_modules/lodash/internal/getView.js",
+        "node_modules/lodash/internal/indexOfNaN.js",
+        "node_modules/lodash/internal/initCloneArray.js",
+        "node_modules/lodash/internal/initCloneByTag.js",
+        "node_modules/lodash/internal/initCloneObject.js",
+        "node_modules/lodash/internal/invokePath.js",
+        "node_modules/lodash/internal/isArrayLike.js",
+        "node_modules/lodash/internal/isIndex.js",
+        "node_modules/lodash/internal/isIterateeCall.js",
+        "node_modules/lodash/internal/isKey.js",
+        "node_modules/lodash/internal/isLaziable.js",
+        "node_modules/lodash/internal/isLength.js",
+        "node_modules/lodash/internal/isObjectLike.js",
+        "node_modules/lodash/internal/isSpace.js",
+        "node_modules/lodash/internal/isStrictComparable.js",
+        "node_modules/lodash/internal/lazyClone.js",
+        "node_modules/lodash/internal/lazyReverse.js",
+        "node_modules/lodash/internal/lazyValue.js",
+        "node_modules/lodash/internal/mapDelete.js",
+        "node_modules/lodash/internal/mapGet.js",
+        "node_modules/lodash/internal/mapHas.js",
+        "node_modules/lodash/internal/mapSet.js",
+        "node_modules/lodash/internal/mergeData.js",
+        "node_modules/lodash/internal/mergeDefaults.js",
+        "node_modules/lodash/internal/metaMap.js",
+        "node_modules/lodash/internal/pickByArray.js",
+        "node_modules/lodash/internal/pickByCallback.js",
+        "node_modules/lodash/internal/reEscape.js",
+        "node_modules/lodash/internal/reEvaluate.js",
+        "node_modules/lodash/internal/reInterpolate.js",
+        "node_modules/lodash/internal/realNames.js",
+        "node_modules/lodash/internal/reorder.js",
+        "node_modules/lodash/internal/replaceHolders.js",
+        "node_modules/lodash/internal/setData.js",
+        "node_modules/lodash/internal/shimKeys.js",
+        "node_modules/lodash/internal/sortedUniq.js",
+        "node_modules/lodash/internal/toIterable.js",
+        "node_modules/lodash/internal/toObject.js",
+        "node_modules/lodash/internal/toPath.js",
+        "node_modules/lodash/internal/trimmedLeftIndex.js",
+        "node_modules/lodash/internal/trimmedRightIndex.js",
+        "node_modules/lodash/internal/unescapeHtmlChar.js",
+        "node_modules/lodash/internal/wrapperClone.js",
+        "node_modules/lodash/lang/clone.js",
+        "node_modules/lodash/lang/cloneDeep.js",
+        "node_modules/lodash/lang/eq.js",
+        "node_modules/lodash/lang/gt.js",
+        "node_modules/lodash/lang/gte.js",
+        "node_modules/lodash/lang/isArguments.js",
+        "node_modules/lodash/lang/isArray.js",
+        "node_modules/lodash/lang/isBoolean.js",
+        "node_modules/lodash/lang/isDate.js",
+        "node_modules/lodash/lang/isElement.js",
+        "node_modules/lodash/lang/isEmpty.js",
+        "node_modules/lodash/lang/isEqual.js",
+        "node_modules/lodash/lang/isError.js",
+        "node_modules/lodash/lang/isFinite.js",
+        "node_modules/lodash/lang/isFunction.js",
+        "node_modules/lodash/lang/isMatch.js",
+        "node_modules/lodash/lang/isNaN.js",
+        "node_modules/lodash/lang/isNative.js",
+        "node_modules/lodash/lang/isNull.js",
+        "node_modules/lodash/lang/isNumber.js",
+        "node_modules/lodash/lang/isObject.js",
+        "node_modules/lodash/lang/isPlainObject.js",
+        "node_modules/lodash/lang/isRegExp.js",
+        "node_modules/lodash/lang/isString.js",
+        "node_modules/lodash/lang/isTypedArray.js",
+        "node_modules/lodash/lang/isUndefined.js",
+        "node_modules/lodash/lang/lt.js",
+        "node_modules/lodash/lang/lte.js",
+        "node_modules/lodash/lang/toArray.js",
+        "node_modules/lodash/lang/toPlainObject.js",
+        "node_modules/lodash/lang.js",
+        "node_modules/lodash/math/add.js",
+        "node_modules/lodash/math/ceil.js",
+        "node_modules/lodash/math/floor.js",
+        "node_modules/lodash/math/max.js",
+        "node_modules/lodash/math/min.js",
+        "node_modules/lodash/math/round.js",
+        "node_modules/lodash/math/sum.js",
+        "node_modules/lodash/math.js",
+        "node_modules/lodash/number/inRange.js",
+        "node_modules/lodash/number/random.js",
+        "node_modules/lodash/number.js",
+        "node_modules/lodash/object/assign.js",
+        "node_modules/lodash/object/create.js",
+        "node_modules/lodash/object/defaults.js",
+        "node_modules/lodash/object/defaultsDeep.js",
+        "node_modules/lodash/object/extend.js",
+        "node_modules/lodash/object/findKey.js",
+        "node_modules/lodash/object/findLastKey.js",
+        "node_modules/lodash/object/forIn.js",
+        "node_modules/lodash/object/forInRight.js",
+        "node_modules/lodash/object/forOwn.js",
+        "node_modules/lodash/object/forOwnRight.js",
+        "node_modules/lodash/object/functions.js",
+        "node_modules/lodash/object/get.js",
+        "node_modules/lodash/object/has.js",
+        "node_modules/lodash/object/invert.js",
+        "node_modules/lodash/object/keys.js",
+        "node_modules/lodash/object/keysIn.js",
+        "node_modules/lodash/object/mapKeys.js",
+        "node_modules/lodash/object/mapValues.js",
+        "node_modules/lodash/object/merge.js",
+        "node_modules/lodash/object/methods.js",
+        "node_modules/lodash/object/omit.js",
+        "node_modules/lodash/object/pairs.js",
+        "node_modules/lodash/object/pick.js",
+        "node_modules/lodash/object/result.js",
+        "node_modules/lodash/object/set.js",
+        "node_modules/lodash/object/transform.js",
+        "node_modules/lodash/object/values.js",
+        "node_modules/lodash/object/valuesIn.js",
+        "node_modules/lodash/object.js",
+        "node_modules/lodash/string/camelCase.js",
+        "node_modules/lodash/string/capitalize.js",
+        "node_modules/lodash/string/deburr.js",
+        "node_modules/lodash/string/endsWith.js",
+        "node_modules/lodash/string/escape.js",
+        "node_modules/lodash/string/escapeRegExp.js",
+        "node_modules/lodash/string/kebabCase.js",
+        "node_modules/lodash/string/pad.js",
+        "node_modules/lodash/string/padLeft.js",
+        "node_modules/lodash/string/padRight.js",
+        "node_modules/lodash/string/parseInt.js",
+        "node_modules/lodash/string/repeat.js",
+        "node_modules/lodash/string/snakeCase.js",
+        "node_modules/lodash/string/startCase.js",
+        "node_modules/lodash/string/startsWith.js",
+        "node_modules/lodash/string/template.js",
+        "node_modules/lodash/string/templateSettings.js",
+        "node_modules/lodash/string/trim.js",
+        "node_modules/lodash/string/trimLeft.js",
+        "node_modules/lodash/string/trimRight.js",
+        "node_modules/lodash/string/trunc.js",
+        "node_modules/lodash/string/unescape.js",
+        "node_modules/lodash/string/words.js",
+        "node_modules/lodash/string.js",
+        "node_modules/lodash/support.js",
+        "node_modules/lodash/utility/attempt.js",
+        "node_modules/lodash/utility/callback.js",
+        "node_modules/lodash/utility/constant.js",
+        "node_modules/lodash/utility/identity.js",
+        "node_modules/lodash/utility/iteratee.js",
+        "node_modules/lodash/utility/matches.js",
+        "node_modules/lodash/utility/matchesProperty.js",
+        "node_modules/lodash/utility/method.js",
+        "node_modules/lodash/utility/methodOf.js",
+        "node_modules/lodash/utility/mixin.js",
+        "node_modules/lodash/utility/noop.js",
+        "node_modules/lodash/utility/property.js",
+        "node_modules/lodash/utility/propertyOf.js",
+        "node_modules/lodash/utility/range.js",
+        "node_modules/lodash/utility/times.js",
+        "node_modules/lodash/utility/uniqueId.js",
+        "node_modules/lodash/utility.js",
+        "node_modules/minimatch/minimatch.js",
+        "node_modules/minimatch/node_modules/brace-expansion/index.js",
+        "node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/index.js",
+        "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/example/map.js",
+        "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/index.js",
+        "node_modules/node-fetch/index.js",
+        "node_modules/node-fetch/lib/body.js",
+        "node_modules/node-fetch/lib/fetch-error.js",
+        "node_modules/node-fetch/lib/headers.js",
+        "node_modules/node-fetch/lib/request.js",
+        "node_modules/node-fetch/lib/response.js",
+        "node_modules/node-fetch/node_modules/encoding/lib/encoding.js",
+        "node_modules/node-fetch/node_modules/encoding/lib/iconv-loader.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/dbcs-codec.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/dbcs-data.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/index.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/internal.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/sbcs-codec.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/sbcs-data-generated.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/sbcs-data.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/utf16.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/utf7.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/lib/bom-handling.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/lib/extend-node.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/lib/index.js",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/lib/streams.js",
+        "node_modules/node-fetch/node_modules/is-stream/index.js",
+        "node_modules/npm-package-lookup/index.js",
+        "node_modules/npm-package-lookup/node_modules/lodash.memoize/index.js",
+        "node_modules/npm-package-lookup/node_modules/lodash.memoize/node_modules/lodash._root/index.js",
+        "node_modules/npm-package-lookup/node_modules/semver-stable/index.js",
+        "node_modules/npm-package-lookup/node_modules/semver-stable/node_modules/semver/semver.js",
+        "node_modules/npm-package-lookup/node_modules/semver-utils/semver-utils.js",
+        "node_modules/packagist-package-lookup/index.js",
+        "node_modules/packagist-package-lookup/node_modules/lodash.memoize/index.js",
+        "node_modules/packagist-package-lookup/node_modules/lodash.memoize/node_modules/lodash._root/index.js",
+        "node_modules/packagist-package-lookup/node_modules/semver-stable/index.js",
+        "node_modules/packagist-package-lookup/node_modules/semver-stable/node_modules/semver/semver.js",
+        "node_modules/packagist-package-lookup/node_modules/semver-utils/semver-utils.js",
+        "node_modules/query-string/index.js",
+        "node_modules/query-string/node_modules/strict-uri-encode/index.js",
+        "node_modules/tokenizer2/core.js",
+        "node_modules/tokenizer2/index.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/duplex.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/lib/_stream_duplex.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/lib/_stream_passthrough.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/lib/_stream_readable.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/lib/_stream_transform.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/lib/_stream_writable.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/test.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/inherits/inherits.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/inherits/inherits_browser.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/inherits/test.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/isarray/index.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/isarray/test.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/process-nextick-args/index.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/process-nextick-args/test.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/string_decoder/index.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/util-deprecate/browser.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/util-deprecate/node.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/passthrough.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/readable.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/transform.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/writable.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/xtend/immutable.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/xtend/mutable.js",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/xtend/test.js",
+        "node_modules/tokenizer2/node_modules/through2/through2.js",
+        "node_modules/uri-js/Gruntfile.js",
+        "node_modules/uri-js/build/punycode.js",
+        "node_modules/uri-js/build/schemes/http.js",
+        "node_modules/uri-js/build/schemes/mailto.js",
+        "node_modules/uri-js/build/schemes/urn.js",
+        "node_modules/uri-js/build/schemes.js",
+        "node_modules/uri-js/build/uri.js",
+        "node_modules/uri-js/dist/schemes/mailto.min.js",
+        "node_modules/uri-js/dist/schemes/urn.min.js",
+        "node_modules/uri-js/dist/uri-iri.min.js",
+        "node_modules/uri-js/dist/uri.min.js",
+        "node_modules/uri-js/index.js",
+        "node_modules/uri-js/src/punycode.js",
+        "node_modules/uri-js/src/uri.externs.js",
+        "node_modules/valid-url/index.js"
+      ],
+      ".json": [
+        "node_modules/electron-proxy-agent/node_modules/agent-base/node_modules/semver/package.json",
+        "node_modules/electron-proxy-agent/node_modules/agent-base/package.json",
+        "node_modules/electron-proxy-agent/node_modules/debug/bower.json",
+        "node_modules/electron-proxy-agent/node_modules/debug/component.json",
+        "node_modules/electron-proxy-agent/node_modules/debug/node_modules/ms/package.json",
+        "node_modules/electron-proxy-agent/node_modules/debug/package.json",
+        "node_modules/electron-proxy-agent/node_modules/extend/.jscs.json",
+        "node_modules/electron-proxy-agent/node_modules/extend/component.json",
+        "node_modules/electron-proxy-agent/node_modules/extend/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/data-uri-to-buffer/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/file-uri-to-path/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/core-util-is/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/inherits/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/isarray/component.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/isarray/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/node_modules/string_decoder/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/xregexp/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/buffer-shims/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/core-util-is/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/inherits/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/isarray/component.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/isarray/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/process-nextick-args/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/string_decoder/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/node_modules/util-deprecate/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/package.json",
+        "node_modules/electron-proxy-agent/node_modules/get-uri/package.json",
+        "node_modules/electron-proxy-agent/node_modules/http-proxy-agent/package.json",
+        "node_modules/electron-proxy-agent/node_modules/https-proxy-agent/package.json",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/node_modules/ip/package.json",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/node_modules/smart-buffer/package.json",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/package.json",
+        "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/package.json",
+        "node_modules/electron-proxy-agent/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/camelcase-keys/node_modules/camelcase/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/camelcase-keys/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/decamelize/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/node_modules/array-find-index/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/signal-exit/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/map-obj/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/minimist/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/typos.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib/warning_messages.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/hosted-git-info/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/node_modules/builtin-modules/builtin-modules.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/node_modules/builtin-modules/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/semver/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-correct/node_modules/spdx-license-ids/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-correct/node_modules/spdx-license-ids/spdx-license-ids.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-correct/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/node_modules/spdx-exceptions/index.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/node_modules/spdx-exceptions/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/node_modules/spdx-license-ids/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/node_modules/spdx-license-ids/spdx-license-ids.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/object-assign/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/path-exists/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/pinkie-promise/node_modules/pinkie/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/pinkie-promise/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/graceful-fs/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pify/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pinkie-promise/node_modules/pinkie/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pinkie-promise/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/strip-bom/node_modules/is-utf8/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/strip-bom/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/graceful-fs/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pify/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pinkie-promise/node_modules/pinkie/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pinkie-promise/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/node_modules/is-finite/node_modules/number-is-nan/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/node_modules/is-finite/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent/node_modules/get-stdin/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/redent/package.json",
+        "node_modules/file-url/node_modules/meow/node_modules/trim-newlines/package.json",
+        "node_modules/file-url/node_modules/meow/package.json",
+        "node_modules/file-url/package.json",
+        "node_modules/jaro-winkler/package.json",
+        "node_modules/lodash/package.json",
+        "node_modules/minimatch/node_modules/brace-expansion/node_modules/balanced-match/package.json",
+        "node_modules/minimatch/node_modules/brace-expansion/node_modules/concat-map/package.json",
+        "node_modules/minimatch/node_modules/brace-expansion/package.json",
+        "node_modules/minimatch/package.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/big5-added.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/cp936.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/cp949.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/cp950.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/eucjp.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/gbk-added.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/encodings/tables/shiftjis.json",
+        "node_modules/node-fetch/node_modules/encoding/node_modules/iconv-lite/package.json",
+        "node_modules/node-fetch/node_modules/encoding/package.json",
+        "node_modules/node-fetch/node_modules/is-stream/package.json",
+        "node_modules/node-fetch/package.json",
+        "node_modules/npm-package-lookup/node_modules/lodash.memoize/node_modules/lodash._root/package.json",
+        "node_modules/npm-package-lookup/node_modules/lodash.memoize/package.json",
+        "node_modules/npm-package-lookup/node_modules/semver-stable/node_modules/semver/package.json",
+        "node_modules/npm-package-lookup/node_modules/semver-stable/package.json",
+        "node_modules/npm-package-lookup/node_modules/semver-utils/package.json",
+        "node_modules/npm-package-lookup/package.json",
+        "node_modules/packagist-package-lookup/node_modules/lodash.memoize/node_modules/lodash._root/package.json",
+        "node_modules/packagist-package-lookup/node_modules/lodash.memoize/package.json",
+        "node_modules/packagist-package-lookup/node_modules/semver-stable/node_modules/semver/package.json",
+        "node_modules/packagist-package-lookup/node_modules/semver-stable/package.json",
+        "node_modules/packagist-package-lookup/node_modules/semver-utils/package.json",
+        "node_modules/packagist-package-lookup/package.json",
+        "node_modules/query-string/node_modules/strict-uri-encode/package.json",
+        "node_modules/query-string/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/inherits/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/isarray/component.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/isarray/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/process-nextick-args/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/string_decoder/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/node_modules/util-deprecate/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/package.json",
+        "node_modules/tokenizer2/node_modules/through2/node_modules/xtend/package.json",
+        "node_modules/tokenizer2/node_modules/through2/package.json",
+        "node_modules/tokenizer2/package.json",
+        "node_modules/uri-js/package.json",
+        "node_modules/uri-js/tsconfig.json",
+        "node_modules/valid-url/package.json",
+        "package.json",
+        "tsconfig.json",
+        "typings.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "dist",
+          "dist/providers/babelrc",
+          "dist/providers/bower",
+          "dist/providers/composer",
+          "dist/providers/package",
+          "dist/providers/schemastore",
+          "dist/providers/tsconfig",
+          ""
+        ],
+        "dependencies": {
+          "electron-proxy-agent": "^1.0.2",
+          "file-url": "^1.1.0",
+          "jaro-winkler": "^0.2.6",
+          "lodash": "^3.10.1",
+          "minimatch": "^3.0.0",
+          "node-fetch": "^1.3.3",
+          "npm-package-lookup": "^0.2.1",
+          "packagist-package-lookup": "^0.2.0",
+          "query-string": "^3.0.0",
+          "tokenizer2": "^1.2.0",
+          "uri-js": "^2.1.1",
+          "valid-url": "^1.0.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent"
+        ],
+        "dependencies": {
+          "agent-base": "2",
+          "debug": "2",
+          "extend": "3",
+          "get-uri": "1",
+          "http-proxy-agent": "1",
+          "https-proxy-agent": "1",
+          "socks-proxy-agent": "2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/agent-base",
+          "node_modules/electron-proxy-agent/node_modules/agent-base/test"
+        ],
+        "dependencies": {
+          "extend": "~3.0.0",
+          "semver": "~5.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/debug"
+        ],
+        "dependencies": {
+          "ms": "0.7.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/get-uri",
+          "node_modules/electron-proxy-agent/node_modules/get-uri/test"
+        ],
+        "dependencies": {
+          "data-uri-to-buffer": "0",
+          "ftp": "~0.3.5",
+          "debug": "2",
+          "extend": "3",
+          "file-uri-to-path": "0",
+          "readable-stream": "2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/lib",
+          "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp",
+          "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/test"
+        ],
+        "dependencies": {
+          "xregexp": "2.0.0",
+          "readable-stream": "1.1.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream",
+          "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/ftp/node_modules/readable-stream/lib"
+        ],
+        "dependencies": {
+          "core-util-is": "~1.0.0",
+          "isarray": "0.0.1",
+          "string_decoder": "~0.10.x",
+          "inherits": "~2.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream",
+          "node_modules/electron-proxy-agent/node_modules/get-uri/node_modules/readable-stream/lib"
+        ],
+        "dependencies": {
+          "buffer-shims": "^1.0.0",
+          "core-util-is": "~1.0.0",
+          "inherits": "~2.0.1",
+          "isarray": "~1.0.0",
+          "process-nextick-args": "~1.0.6",
+          "string_decoder": "~0.10.x",
+          "util-deprecate": "~1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/http-proxy-agent",
+          "node_modules/electron-proxy-agent/node_modules/http-proxy-agent/test"
+        ],
+        "dependencies": {
+          "agent-base": "2",
+          "extend": "3",
+          "debug": "2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/https-proxy-agent",
+          "node_modules/electron-proxy-agent/node_modules/https-proxy-agent/test"
+        ],
+        "dependencies": {
+          "agent-base": "2",
+          "debug": "2",
+          "extend": "3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent",
+          "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/test"
+        ],
+        "dependencies": {
+          "agent-base": "2",
+          "extend": "3",
+          "socks": "~1.1.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/examples",
+          "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks",
+          "node_modules/electron-proxy-agent/node_modules/socks-proxy-agent/node_modules/socks/lib"
+        ],
+        "dependencies": {
+          "ip": "^1.1.2",
+          "smart-buffer": "^1.0.4"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url"
+        ],
+        "dependencies": {
+          "meow": "^3.7.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow"
+        ],
+        "dependencies": {
+          "camelcase-keys": "^2.0.0",
+          "decamelize": "^1.1.2",
+          "loud-rejection": "^1.0.0",
+          "map-obj": "^1.0.1",
+          "minimist": "^1.1.3",
+          "normalize-package-data": "^2.3.4",
+          "object-assign": "^4.0.1",
+          "read-pkg-up": "^1.0.1",
+          "redent": "^1.0.0",
+          "trim-newlines": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/camelcase-keys"
+        ],
+        "dependencies": {
+          "camelcase": "^2.0.0",
+          "map-obj": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/loud-rejection"
+        ],
+        "dependencies": {
+          "currently-unhandled": "^0.4.1",
+          "signal-exit": "^3.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/loud-rejection/node_modules/currently-unhandled"
+        ],
+        "dependencies": {
+          "array-find-index": "^1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/lib",
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data",
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/test",
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/test/fixtures"
+        ],
+        "dependencies": {
+          "hosted-git-info": "^2.1.4",
+          "is-builtin-module": "^1.0.0",
+          "semver": "2 || 3 || 4 || 5",
+          "validate-npm-package-license": "^3.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/is-builtin-module"
+        ],
+        "dependencies": {
+          "builtin-modules": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license"
+        ],
+        "dependencies": {
+          "spdx-correct": "~1.0.0",
+          "spdx-expression-parse": "~1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-correct"
+        ],
+        "dependencies": {
+          "spdx-license-ids": "^1.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/normalize-package-data/node_modules/validate-npm-package-license/node_modules/spdx-expression-parse"
+        ],
+        "dependencies": {
+          "spdx-exceptions": "^1.0.4",
+          "spdx-license-ids": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up"
+        ],
+        "dependencies": {
+          "find-up": "^1.0.0",
+          "read-pkg": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up"
+        ],
+        "dependencies": {
+          "path-exists": "^2.0.0",
+          "pinkie-promise": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/path-exists"
+        ],
+        "dependencies": {
+          "pinkie-promise": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/find-up/node_modules/pinkie-promise"
+        ],
+        "dependencies": {
+          "pinkie": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg"
+        ],
+        "dependencies": {
+          "load-json-file": "^1.0.0",
+          "normalize-package-data": "^2.3.2",
+          "path-type": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file"
+        ],
+        "dependencies": {
+          "graceful-fs": "^4.1.2",
+          "parse-json": "^2.2.0",
+          "pify": "^2.0.0",
+          "pinkie-promise": "^2.0.0",
+          "strip-bom": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json",
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/vendor"
+        ],
+        "dependencies": {
+          "error-ex": "^1.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex"
+        ],
+        "dependencies": {
+          "is-arrayish": "^0.2.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/pinkie-promise"
+        ],
+        "dependencies": {
+          "pinkie": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/strip-bom"
+        ],
+        "dependencies": {
+          "is-utf8": "^0.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type"
+        ],
+        "dependencies": {
+          "graceful-fs": "^4.1.2",
+          "pify": "^2.0.0",
+          "pinkie-promise": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/path-type/node_modules/pinkie-promise"
+        ],
+        "dependencies": {
+          "pinkie": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/redent"
+        ],
+        "dependencies": {
+          "indent-string": "^2.1.0",
+          "strip-indent": "^1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string"
+        ],
+        "dependencies": {
+          "repeating": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating"
+        ],
+        "dependencies": {
+          "is-finite": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/indent-string/node_modules/repeating/node_modules/is-finite"
+        ],
+        "dependencies": {
+          "number-is-nan": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/file-url/node_modules/meow/node_modules/redent/node_modules/strip-indent"
+        ],
+        "dependencies": {
+          "get-stdin": "^4.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/minimatch"
+        ],
+        "dependencies": {
+          "brace-expansion": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/minimatch/node_modules/brace-expansion"
+        ],
+        "dependencies": {
+          "balanced-match": "^0.4.1",
+          "concat-map": "0.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-fetch",
+          "node_modules/node-fetch/lib",
+          "node_modules/node-fetch/test"
+        ],
+        "dependencies": {
+          "encoding": "^0.1.11",
+          "is-stream": "^1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-fetch/node_modules/encoding/lib",
+          "node_modules/node-fetch/node_modules/encoding",
+          "node_modules/node-fetch/node_modules/encoding/test"
+        ],
+        "dependencies": {
+          "iconv-lite": "~0.4.13"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/npm-package-lookup"
+        ],
+        "dependencies": {
+          "lodash.memoize": "^4.0.1",
+          "node-fetch": "^1.3.3",
+          "query-string": "^3.0.0",
+          "semver-stable": "^2.0.4",
+          "semver-utils": "^1.1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/npm-package-lookup/node_modules/lodash.memoize"
+        ],
+        "dependencies": {
+          "lodash._root": "~3.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/npm-package-lookup/node_modules/semver-stable",
+          "node_modules/npm-package-lookup/node_modules/semver-stable/test"
+        ],
+        "dependencies": {
+          "semver": "^5.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/packagist-package-lookup"
+        ],
+        "dependencies": {
+          "lodash.memoize": "^4.0.1",
+          "node-fetch": "^1.3.3",
+          "semver-stable": "^2.0.4",
+          "semver-utils": "^1.1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/packagist-package-lookup/node_modules/lodash.memoize"
+        ],
+        "dependencies": {
+          "lodash._root": "~3.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/packagist-package-lookup/node_modules/semver-stable",
+          "node_modules/packagist-package-lookup/node_modules/semver-stable/test"
+        ],
+        "dependencies": {
+          "semver": "^5.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/query-string"
+        ],
+        "dependencies": {
+          "strict-uri-encode": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/tokenizer2"
+        ],
+        "dependencies": {
+          "through2": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/tokenizer2/node_modules/through2"
+        ],
+        "dependencies": {
+          "readable-stream": "~2.0.0",
+          "xtend": "~4.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream",
+          "node_modules/tokenizer2/node_modules/through2/node_modules/readable-stream/lib"
+        ],
+        "dependencies": {
+          "core-util-is": "~1.0.0",
+          "inherits": "~2.0.1",
+          "isarray": "~1.0.0",
+          "process-nextick-args": "~1.0.6",
+          "string_decoder": "~0.10.x",
+          "util-deprecate": "~1.0.1"
+        }
+      }
+    ]
+  }
+}

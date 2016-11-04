@@ -1,0 +1,65 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+        "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-116821-82161-103fsz4"
+    ]
+  ],
+  "_from": "../d-116821-82161-1viy88j/package.tgz",
+  "_id": "pinned-tabs@0.4.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/pinned-tabs",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+    "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-116821-82161-1viy88j/package.tgz",
+  "_shasum": "b980cdb81d8a0eeb6e67940e9d50b8e585ba65b7",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+  "_where": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-116821-82161-103fsz4",
+  "bugs": {
+    "url": "https://github.com/ericcornelissen/pinned-tabs-for-atom/issues"
+  },
+  "dependencies": {},
+  "description": "An Atom package that allows you to pin tabs",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/ericcornelissen/pinned-tabs-for-atom#readme",
+  "keywords": [
+    "pinned",
+    "pin",
+    "tabs"
+  ],
+  "license": "MIT",
+  "main": "./lib/pinned-tabs",
+  "name": "pinned-tabs",
+  "optionalDependencies": {},
+  "readme": "# Pinned tabs for Atom\nA simple package for the Atom text editor from GitHub that allows you to pin tabs. Inspired by the pin tab feature from Google Chrome.\n\nFor the best experience of this package, I recommend using it with the [file-icons](https://atom.io/packages/file-icons) package.\n\n![preview gif](http://i.imgur.com/zdzpBnd.gif)\n\n* * *\n\n### Usage\nThere are three ways to pin/unpin a tab using this package.\n- Via the context menu of a tab.\n- Via the keyboard shortcut ```ctrl-alt-p```.\n- Via the command-palette, by typing ```pin```.\n\n* * *\n\n### Installation\nVia the Atom Package Manager (APM)\n```\n$ apm install pinned-tabs\n```\n\nOr via Git clone\n```\n$ cd ~/.atom/packages\n$ git clone https://github.com/ericcornelissen/pinned-tabs-for-atom --depth=1\n```\n\n* * *\n\nCopyright © 2015-2016 Eric Cornelissen | MIT license\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericcornelissen/pinned-tabs-for-atom.git"
+  },
+  "version": "0.4.1"
+}

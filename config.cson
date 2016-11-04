@@ -1,0 +1,29 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "4b0d816e-02d5-4e2d-96f8-d41eac8ab08a"
+  "autocomplete-ruby": {}
+  autosave:
+    enabled: true
+  core:
+    telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "monokai-seti"
+    ]
+  editor:
+    invisibles: {}
+  "exception-reporting":
+    userId: "cc5e976c-d0a1-d4d6-3159-c4cc653bd77e"
+  "git-plus": {}
+  "git-status": {}
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "rubocop-auto-correct":
+    autoRun: true
+    correctFile: true
+    debugMode: true
+  welcome:
+    showOnStartup: false
