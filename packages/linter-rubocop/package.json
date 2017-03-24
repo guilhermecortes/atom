@@ -2,210 +2,105 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116827-2011-11fchcn/package.tgz",
+        "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117213-85337-1liagx1/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116827-2011-11fchcn/package.tgz",
-        "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116827-2011-11fchcn/package.tgz",
+        "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117213-85337-1liagx1/package.tgz",
+        "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117213-85337-1liagx1/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-116827-2011-baue53"
+      "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-117213-85337-103e44h"
     ]
   ],
-  "_from": "../d-116827-2011-11fchcn/package.tgz",
-  "_id": "linter-rubocop@0.5.0",
+  "_from": "../d-117213-85337-1liagx1/package.tgz",
+  "_id": "linter-rubocop@1.1.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/linter-rubocop",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116827-2011-11fchcn/package.tgz",
+    "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117213-85337-1liagx1/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116827-2011-11fchcn/package.tgz",
-    "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116827-2011-11fchcn/package.tgz",
+    "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117213-85337-1liagx1/package.tgz",
+    "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117213-85337-1liagx1/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-116827-2011-11fchcn/package.tgz",
-  "_shasum": "bc1ca03ab2177e110d7cb15c667f1b2142cf72c4",
+  "_resolved": "file:../d-117213-85337-1liagx1/package.tgz",
+  "_shasum": "b72add8a9d14e57ed22a709506b25097278b0f03",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116827-2011-11fchcn/package.tgz",
-  "_where": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-116827-2011-baue53",
+  "_spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117213-85337-1liagx1/package.tgz",
+  "_where": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-117213-85337-103e44h",
+  "activationHooks": [
+    "language-ruby:grammar-used",
+    "language-ruby-on-rails:grammar-used",
+    "language-chef:grammar-used"
+  ],
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-rubocop/issues"
   },
-  "coffeelintConfig": {
-    "arrow_spacing": {
-      "level": "error"
+  "configSchema": {
+    "command": {
+      "type": "string",
+      "default": "rubocop",
+      "description": "This is the absolute path to your `rubocop` command. You may need to run `which rubocop` or `rbenv which rubocop` to find this. Examples: `/usr/local/bin/rubocop` or `/usr/local/bin/bundle exec rubocop --config /my/rubocop.yml`."
     },
-    "braces_spacing": {
-      "level": "error",
-      "spaces": 0,
-      "empty_object_spaces": 0
-    },
-    "camel_case_classes": {
-      "level": "error"
-    },
-    "coffeescript_error": {
-      "level": "error"
-    },
-    "colon_assignment_spacing": {
-      "level": "error",
-      "spacing": {
-        "left": 0,
-        "right": 1
-      }
-    },
-    "cyclomatic_complexity": {
-      "value": 10,
-      "level": "ignore"
-    },
-    "duplicate_key": {
-      "level": "error"
-    },
-    "empty_constructor_needs_parens": {
-      "level": "ignore"
-    },
-    "ensure_comprehensions": {
-      "level": "warn"
-    },
-    "eol_last": {
-      "level": "ignore"
-    },
-    "indentation": {
-      "value": 2,
-      "level": "error"
-    },
-    "line_endings": {
-      "level": "ignore",
-      "value": "unix"
-    },
-    "max_line_length": {
-      "value": 120,
-      "level": "warn",
-      "limitComments": true
-    },
-    "missing_fat_arrows": {
-      "level": "ignore",
-      "is_strict": false
-    },
-    "newlines_after_classes": {
-      "value": 3,
-      "level": "ignore"
-    },
-    "no_backticks": {
-      "level": "error"
-    },
-    "no_debugger": {
-      "level": "error",
-      "console": false
-    },
-    "no_empty_functions": {
-      "level": "ignore"
-    },
-    "no_empty_param_list": {
-      "level": "error"
-    },
-    "no_implicit_braces": {
-      "level": "ignore",
-      "strict": true
-    },
-    "no_implicit_parens": {
-      "strict": true,
-      "level": "ignore"
-    },
-    "no_interpolation_in_single_quotes": {
-      "level": "error"
-    },
-    "no_nested_string_interpolation": {
-      "level": "warn"
-    },
-    "no_plusplus": {
-      "level": "ignore"
-    },
-    "no_private_function_fat_arrows": {
-      "level": "warn"
-    },
-    "no_stand_alone_at": {
-      "level": "error"
-    },
-    "no_tabs": {
-      "level": "error"
-    },
-    "no_this": {
-      "level": "ignore"
-    },
-    "no_throwing_strings": {
-      "level": "error"
-    },
-    "no_trailing_semicolons": {
-      "level": "error"
-    },
-    "no_trailing_whitespace": {
-      "level": "error",
-      "allowed_in_comments": false,
-      "allowed_in_empty_lines": true
-    },
-    "no_unnecessary_double_quotes": {
-      "level": "error"
-    },
-    "no_unnecessary_fat_arrows": {
-      "level": "warn"
-    },
-    "non_empty_constructor_needs_parens": {
-      "level": "ignore"
-    },
-    "prefer_english_operator": {
-      "level": "error",
-      "doubleNotLevel": "ignore"
-    },
-    "space_operators": {
-      "level": "ignore"
-    },
-    "spacing_after_comma": {
-      "level": "error"
-    },
-    "transform_messes_up_line_numbers": {
-      "level": "warn"
+    "disableWhenNoConfigFile": {
+      "type": "boolean",
+      "title": "Disable when no .rubocop.yml config file is found",
+      "default": false,
+      "description": "Only run linter if a RuboCop config file is found somewhere in the path for the current file."
     }
   },
   "dependencies": {
-    "atom-linter": "~8.0.0",
-    "escape-html": "^1.0.3"
+    "atom-linter": "^9.0.0",
+    "atom-package-deps": "^4.4.1",
+    "escape-html": "^1.0.3",
+    "pluralize": "^3.1.0"
   },
-  "description": "Lint `Ruby` on the fly, using rubocop",
+  "description": "Lint Ruby on the fly, using rubocop",
   "devDependencies": {
-    "coffeelint": "^1.15.0",
-    "eslint": "^3.6.0",
-    "eslint-config-airbnb-base": "^8.0.0",
-    "eslint-plugin-import": "^1.16.0"
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "tmp": "^0.0.31"
   },
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.4.0 <2.0.0"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
+    "rules": {
+      "global-require": "off",
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
+    },
     "globals": {
       "atom": true
     },
     "env": {
-      "es6": true,
       "node": true
-    },
-    "rules": {
-      "global-require": 0
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-rubocop#readme",
   "license": "MIT",
-  "main": "./lib/index.coffee",
+  "main": "./src/index.js",
   "name": "linter-rubocop",
   "optionalDependencies": {},
+  "package-deps": [
+    "linter"
+  ],
   "providedServices": {
     "linter": {
       "versions": {
@@ -220,8 +115,8 @@
     "url": "git+https://github.com/AtomLinter/linter-rubocop.git"
   },
   "scripts": {
-    "lint": "coffeelint lib && eslint spec",
+    "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "0.5.0"
+  "version": "1.1.0"
 }

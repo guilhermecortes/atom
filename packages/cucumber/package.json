@@ -1,35 +1,64 @@
 {
-  "name": "cucumber",
-  "version": "0.5.0",
-  "private": true,
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63496-p8dfb6/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63496-p8dfb6/package.tgz",
+        "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63496-p8dfb6/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-117024-63496-1sz1qr7"
+    ]
+  ],
+  "_from": "../d-117024-63496-p8dfb6/package.tgz",
+  "_id": "cucumber@0.6.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cucumber",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63496-p8dfb6/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63496-p8dfb6/package.tgz",
+    "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63496-p8dfb6/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-117024-63496-p8dfb6/package.tgz",
+  "_shasum": "740b71212b1acdae5beaf2fe3441af67d98a67b6",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63496-p8dfb6/package.tgz",
+  "_where": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-117024-63496-1sz1qr7",
+  "activationCommands": {
+    "atom-workspace": "cucumber:align-table-cells"
+  },
+  "bugs": {
+    "url": "https://github.com/edda/cucumber-atom/issues"
+  },
+  "dependencies": {},
   "description": "Cucumber support for atom. Converted from https://github.com/cucumber/cucumber-tmbundle",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/edda/cucumber-atom#readme",
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "cucumber",
+  "optionalDependencies": {},
+  "private": true,
+  "readme": "# cucumber package\n\nCucumber support for atom. Converted from https://github.com/cucumber/cucumber-tmbundle\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/edda/cucumber-atom.git"
   },
-  "license": "MIT",
-  "engines": {
-    "atom": ">0.50.0"
-  },
-  "dependencies": {},
-  "readme": "# cucumber package\n\nCucumber support for atom. Converted from https://github.com/cucumber/cucumber-tmbundle\n",
-  "readmeFilename": "README.md",
-  "bugs": {
-    "url": "https://github.com/edda/cucumber-atom/issues"
-  },
-  "homepage": "https://github.com/edda/cucumber-atom#readme",
-  "_id": "cucumber@0.5.0",
-  "_shasum": "fd261d62a659ec597455ad08927880816df18be0",
-  "_resolved": "file:../d-116313-98820-92vgfn/package.tgz",
-  "_from": "../d-116313-98820-92vgfn/package.tgz",
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [],
-    "extensions": {
-      ".json": [
-        "package.json"
-      ]
-    },
-    "folders": []
-  }
+  "version": "0.6.0"
 }

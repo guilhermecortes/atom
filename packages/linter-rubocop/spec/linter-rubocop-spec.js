@@ -1,8 +1,12 @@
 'use babel';
 
 import * as path from 'path';
+import { truncateSync, writeFileSync, readFileSync } from 'fs';
 
-const lint = require('../lib/index.coffee').provideLinter().lint;
+// eslint-disable-next-line import/no-extraneous-dependencies
+import tmp from 'tmp';
+
+const lint = require('../src/index.js').provideLinter().lint;
 
 const badPath = path.join(__dirname, 'fixtures', 'bad.rb');
 const emptyPath = path.join(__dirname, 'fixtures', 'empty.rb');
@@ -13,20 +17,27 @@ const invalidWithoutUrlPath = path.join(__dirname, 'fixtures', 'invalid_without_
 describe('The RuboCop provider for Linter', () => {
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
-    waitsForPromise(() => {
+
+    // Info about this beforeEach() implementation:
+    // https://github.com/AtomLinter/Meta/issues/15
+    const activationPromise =
       atom.packages.activatePackage('linter-rubocop');
-      return atom.packages.activatePackage('language-ruby').then(() =>
-        atom.workspace.open(goodPath)
-      );
-    });
+
+    waitsForPromise(() =>
+      atom.packages.activatePackage('language-ruby').then(() =>
+        atom.workspace.open(goodPath),
+    ));
+
+    atom.packages.triggerDeferredActivationHooks();
+    waitsForPromise(() => activationPromise);
   });
 
   it('should be in the packages list', () =>
-    expect(atom.packages.isPackageLoaded('linter-rubocop')).toEqual(true)
+    expect(atom.packages.isPackageLoaded('linter-rubocop')).toEqual(true),
   );
 
   it('should be an active package', () =>
-    expect(atom.packages.isPackageActive('linter-rubocop')).toEqual(true)
+    expect(atom.packages.isPackageActive('linter-rubocop')).toEqual(true),
   );
 
   describe('shows errors in a file with errors', () => {
@@ -34,7 +45,7 @@ describe('The RuboCop provider for Linter', () => {
 
     beforeEach(() => {
       waitsForPromise(() =>
-        atom.workspace.open(badPath).then((openEditor) => { editor = openEditor; })
+        atom.workspace.open(badPath).then((openEditor) => { editor = openEditor; }),
       );
     });
 
@@ -49,7 +60,7 @@ describe('The RuboCop provider for Linter', () => {
           expect(messages[0].text).not.toBeDefined();
           expect(messages[0].filePath).toEqual(badPath);
           expect(messages[0].range).toEqual([[0, 6], [0, 7]]);
-        })
+        }),
       );
     });
   });
@@ -59,7 +70,7 @@ describe('The RuboCop provider for Linter', () => {
 
     beforeEach(() => {
       waitsForPromise(() =>
-        atom.workspace.open(invalidWithUrlPath).then((openEditor) => { editor = openEditor; })
+        atom.workspace.open(invalidWithUrlPath).then((openEditor) => { editor = openEditor; }),
       );
     });
 
@@ -75,7 +86,7 @@ describe('The RuboCop provider for Linter', () => {
           expect(messages[0].text).not.toBeDefined();
           expect(messages[0].filePath).toEqual(invalidWithUrlPath);
           expect(messages[0].range).toEqual([[0, 6], [0, 20]]);
-        })
+        }),
       );
     });
   });
@@ -85,7 +96,7 @@ describe('The RuboCop provider for Linter', () => {
 
     beforeEach(() => {
       waitsForPromise(() =>
-        atom.workspace.open(invalidWithoutUrlPath).then((openEditor) => { editor = openEditor; })
+        atom.workspace.open(invalidWithoutUrlPath).then((openEditor) => { editor = openEditor; }),
       );
     });
 
@@ -99,8 +110,8 @@ describe('The RuboCop provider for Linter', () => {
           expect(messages[0].html).toBe(msgText);
           expect(messages[0].text).not.toBeDefined();
           expect(messages[0].filePath).toEqual(invalidWithoutUrlPath);
-          expect(messages[0].range).toEqual([[5, 0], [5, 1]]);
-        })
+          expect(messages[0].range).toEqual([[4, 0], [4, 1]]);
+        }),
       );
     });
   });
@@ -109,9 +120,9 @@ describe('The RuboCop provider for Linter', () => {
     waitsForPromise(() =>
       atom.workspace.open(emptyPath).then(editor =>
         lint(editor).then(messages =>
-          expect(messages.length).toEqual(0)
-        )
-      )
+          expect(messages.length).toEqual(0),
+        ),
+      ),
     );
   });
 
@@ -119,9 +130,56 @@ describe('The RuboCop provider for Linter', () => {
     waitsForPromise(() =>
       atom.workspace.open(goodPath).then(editor =>
         lint(editor).then(messages =>
-          expect(messages.length).toEqual(0)
-        )
-      )
+          expect(messages.length).toEqual(0),
+        ),
+      ),
     );
+  });
+
+  describe('allows the user to autocorrect the current file', () => {
+    let doneCorrecting;
+    const tmpobj = tmp.fileSync({ postfix: '.rb' });
+    const checkNotificaton = (notification) => {
+      const message = notification.getMessage();
+      if (message === 'Linter-Rubocop: No fixes were made') {
+        expect(notification.getType()).toEqual('info');
+      } else {
+        expect(message).toMatch(/Linter-Rubocop: Fixed \d offenses/);
+        expect(notification.getType()).toEqual('success');
+      }
+      doneCorrecting = true;
+    };
+
+    beforeEach(() => {
+      truncateSync(tmpobj.name);
+      doneCorrecting = false;
+    });
+
+    it('corrects the bad file', () => {
+      writeFileSync(tmpobj.name, readFileSync(invalidWithUrlPath));
+      waitsForPromise(() =>
+        atom.workspace.open(tmpobj.name).then((editor) => {
+          atom.notifications.onDidAddNotification(checkNotificaton);
+          atom.commands.dispatch(atom.views.getView(editor), 'linter-rubocop:fix-file');
+        }),
+      );
+      waitsFor(
+        () => doneCorrecting,
+        'Notification type should be checked',
+      );
+    });
+
+    it("doesn't modify a good file", () => {
+      waitsForPromise(() =>
+        atom.workspace.open(goodPath).then((editor) => {
+          atom.notifications.onDidAddNotification(checkNotificaton);
+          atom.commands.dispatch(atom.views.getView(editor), 'linter-rubocop:fix-file');
+        }),
+      );
+      waitsFor(
+        () => doneCorrecting,
+        'Notification type should be checked',
+      );
+    });
   });
 });

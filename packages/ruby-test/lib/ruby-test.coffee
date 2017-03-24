@@ -50,9 +50,6 @@ module.exports =
       title: "Cucumber command: Run features at current line"
       type: 'string',
       default: "cucumber --color {relative_path}:{line_number}"
-    shell:
-      type: 'string',
-      default: "bash"
     specFramework:
       type: 'string'
       default: ''
@@ -66,11 +63,14 @@ module.exports =
 
   rubyTestView: null
 
-  activate: (state) ->
-    @rubyTestView = new RubyTestView(state.rubyTestViewState)
+  activate: (@state) ->
+    require('atom-package-deps').install('ruby-test')
+
+  consumeRunInTerminal: (runInTerminalProvider) ->
+    @rubyTestView = new RubyTestView(@state.rubyTestViewState, runInTerminalProvider)
 
   deactivate: ->
     @rubyTestView.destroy()
 
   serialize: ->
-    rubyTestViewState: @rubyTestView.serialize()
+    rubyTestViewState: @rubyTestView.serialize() if @rubyTestView

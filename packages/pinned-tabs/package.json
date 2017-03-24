@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+        "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63547-13ub4yj/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
-        "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+        "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63547-13ub4yj/package.tgz",
+        "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63547-13ub4yj/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-116821-82161-103fsz4"
+      "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-117024-63547-cwrsh5"
     ]
   ],
-  "_from": "../d-116821-82161-1viy88j/package.tgz",
-  "_id": "pinned-tabs@0.4.1",
+  "_from": "../d-117024-63547-13ub4yj/package.tgz",
+  "_id": "pinned-tabs@0.4.2",
   "_inCache": true,
   "_installable": true,
   "_location": "/pinned-tabs",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+    "raw": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63547-13ub4yj/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
-    "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
+    "rawSpec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63547-13ub4yj/package.tgz",
+    "spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63547-13ub4yj/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-116821-82161-1viy88j/package.tgz",
-  "_shasum": "b980cdb81d8a0eeb6e67940e9d50b8e585ba65b7",
+  "_resolved": "file:../d-117024-63547-13ub4yj/package.tgz",
+  "_shasum": "610f78c6a7408985c52fa421f762e443204b5f56",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-116821-82161-1viy88j/package.tgz",
-  "_where": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-116821-82161-103fsz4",
+  "_spec": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/d-117024-63547-13ub4yj/package.tgz",
+  "_where": "/private/var/folders/lq/w_0sst250637p0vm68llylyr0000gn/T/apm-install-dir-117024-63547-cwrsh5",
   "bugs": {
     "url": "https://github.com/ericcornelissen/pinned-tabs-for-atom/issues"
   },
@@ -61,5 +61,5 @@
     "type": "git",
     "url": "git+https://github.com/ericcornelissen/pinned-tabs-for-atom.git"
   },
-  "version": "0.4.1"
+  "version": "0.4.2"
 }
